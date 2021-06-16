@@ -1,0 +1,27 @@
+header{
+    position: relative;
+    padding: 10px;
+}
+
+header>a{
+    float: left;
+    text-decoration: none;
+    color: cornflowerblue;
+}
+
+header nav{
+    float: right;
+}
+
+header ul li{
+    display: inline-block;
+    padding-right: 10px;
+}
+
+header ul li a{
+    color: #999999;
+}
+
+header .clearBoth{
+    clear: both;
+}
