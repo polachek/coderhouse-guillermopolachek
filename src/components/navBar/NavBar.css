@@ -9,7 +9,7 @@ header>a{
     color: cornflowerblue;
 }
 
-header nav{
+header .navBar_rightSidebar{
     float: right;
 }
 

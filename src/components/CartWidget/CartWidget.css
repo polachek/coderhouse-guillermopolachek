@@ -1,0 +1,9 @@
+.cart_widget{
+    text-align: right;
+}
+
+.cart_widget img{
+    width: 35px;
+    height: 33px;
+    margin-right: 10px;
+}
