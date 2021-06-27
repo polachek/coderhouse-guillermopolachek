@@ -1,23 +1,11 @@
-export const Item = () => {
-    const miItem = [
-        {
-            id: '1',
-            title: 'Producto 1',
-            price: 1,
-            pictureUrl : 'algo.png',
-        },
-        {
-            id: '2',
-            title: 'Producto 2',
-            price: 2,
-            pictureUrl : 'algo.png',
-        },
-        {
-            id: '3',
-            title: 'Producto 3',
-            price: 3,
-            pictureUrl : 'algo.png',
-        }
-    ]
-    return miItem    
+import './Item.css';
+
+export const Item = ({item}) => {
+    return (
+        <article className={`item_box item_${item.id}`}>
+            <img src={item.pictureUrl} alt={item.title} />
+            <p>{item.title}</p>
+            <p>${item.price}</p>
+        </article>
+    )    
 }
