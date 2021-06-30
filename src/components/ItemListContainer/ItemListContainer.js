@@ -10,7 +10,7 @@ export const ItemListContainer = (props) => {
     const miItem = [
         {
             id: '1',
-            title: 'Conjunto floreado verano 2022',
+            title: 'Vestido floreado verano 2022',
             price: 1250,
             pictureUrl : 'https://i.pinimg.com/originals/d1/f6/17/d1f6175188edae71c2f734632aacb3d8.jpg',
         },
@@ -22,7 +22,7 @@ export const ItemListContainer = (props) => {
         },
         {
             id: '3',
-            title: 'Conjunto a rayas negro y blanco',
+            title: 'Vestido a rayas negro y blanco',
             price: 890,
             pictureUrl : 'https://i.pinimg.com/originals/30/e1/e3/30e1e3c00cdea7231294572987e1497f.jpg',
         },

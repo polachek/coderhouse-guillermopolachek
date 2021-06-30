@@ -1,8 +1,14 @@
 import './CartWidget.css';
-import logo_shoppingCart from '../../img/shopping-cart-icon.png'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faShoppingBag } from '@fortawesome/free-solid-svg-icons'
+
 export const CartWidget = () => {
-    return <aside className="cart_widget">
-        <img src={logo_shoppingCart} alt={"Shopping cart"} />
+    return( 
+    <aside className="cart_widget">
+        <span class="fa-stack fa-2x has-badge" data-count="5">
+            <FontAwesomeIcon icon={faShoppingBag}/> 
+        </span>
     </aside>
+    )
     
 }

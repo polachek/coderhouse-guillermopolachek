@@ -1,27 +1,71 @@
 header{
     position: relative;
     padding: 10px;
+    width: 100%;
+    box-shadow: 2px 2px 15px 0 #e5e5e5;
 }
 
-header>a{
-    float: left;
+header .logo{
+    width: 120px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    animation: swing ease-in-out 1s infinite alternate;
+    transform-origin: center -20px;
+}
+
+header .logo a{
     text-decoration: none;
-    color: cornflowerblue;
+
 }
 
-header .navBar_rightSidebar{
+header .logo img{
+    width: 80px;
+    height: auto;
+}
+
+@keyframes swing {
+    0% { transform: rotate(3deg); }
+    100% { transform: rotate(-3deg); }
+}
+
+header .navigation.nav_left{
+    float: left;
+}
+
+header .navigation.nav_right{
     float: right;
+}
+
+header .navigation a:hover{
+    color:#5abcd8;
 }
 
 header ul li{
     display: inline-block;
-    padding-right: 10px;
+    padding-right: 15px;
 }
 
 header ul li a{
     color: #999999;
+    text-decoration: none;
+    transition: all 400ms ease;
+    font-size: 18px;
+}
+
+header ul li a.cat_main{
+    font-size: 20px;
+    font-weight: 600;
 }
 
 header .clearBoth{
     clear: both;
+}
+
+header .cart_widget{
+    float: right;
+    margin-right: 45px;
+    margin-left: 15px;
 }

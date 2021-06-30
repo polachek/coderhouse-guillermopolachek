@@ -2,8 +2,33 @@
     text-align: right;
 }
 
-.cart_widget img{
-    width: 35px;
-    height: 33px;
-    margin-right: 10px;
+.cart_widget .fa-stack[data-count]:after{
+    position: absolute;
+    right: 23px;
+    top: 13px;
+    content: attr(data-count);
+    font-size: 13px;
+    padding: 0px;
+    width: 20px;
+    line-height: 20px;
+    color: #ffffff;
+    text-align: center;
+    font-weight: normal;
+    background-color: #A4A4A4;
+    border-radius: 99px;
+}
+
+.cart_widget .fa-stack {
+    display: inline-block;
+    width: 38px;
+    height: 38px;
+    position: relative;    
+}
+
+.cart_widget .fa-shopping-bag {
+    width: 38px;
+    height: 34px;
+    font-size: 18px;
+    color: #545454;
+    margin-top: 10px;
 }
