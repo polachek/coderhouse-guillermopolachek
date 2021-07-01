@@ -1,0 +1,66 @@
+[
+    {
+        "id": 1,
+        "title": "Vestido floreado verano 2022",
+        "price": 1250,
+        "pictureUrl" : "https://i.pinimg.com/originals/d1/f6/17/d1f6175188edae71c2f734632aacb3d8.jpg",
+        "desc":"Vestido con girasoles, hojas verdes y tela blanca, ondulado en hombros para que este verano sea la sensación",
+        "category": ["verano", "vestidos"]
+    },
+    {
+        "id": 2,
+        "title": "Pijama osito marron",
+        "price": 2500,
+        "pictureUrl" : "http://i.ebayimg.com/images/g/VEkAAOSwb7NZu5UC/s-l500.jpg",
+        "desc":"Muy abrigado para este invierno, hermoso pijama",
+        "category": ["invierno", "pijamas"]
+    },
+    {
+        "id": 3,
+        "title": "Vestido a rayas negro y blanco",
+        "price": 890,
+        "pictureUrl" : "https://i.pinimg.com/originals/30/e1/e3/30e1e3c00cdea7231294572987e1497f.jpg",
+        "desc":"Vestido a rayas negro y blanco con la mejor onda",
+        "category": ["verano", "vestidos"]
+    },
+    {
+        "id": 4,
+        "title": "Camisa a cuadros verde",
+        "price": 1250,
+        "pictureUrl" : "https://i.pinimg.com/originals/78/1d/a3/781da35dd9ae039b9bcd372de7513172.jpg",
+        "desc":"Camisa a cuadros verdes de la marca GP",
+        "category": ["verano", "camisas"]
+    },
+    {
+        "id": 5,
+        "title": "Traje con tiradores",
+        "price": 4000,
+        "pictureUrl" : "https://s.alicdn.com/@sc01/kf/Hc1f37b3aa48d4e18b07a8b02ff0b267fm.jpg_300x300.jpg",
+        "desc":"Traje para fiestas",
+        "category": ["verano", "trajes", "invierno"]
+    },
+    {
+        "id": 6,
+        "title": "Short amarillo",
+        "price": 600,
+        "pictureUrl" : "https://media.idkids.fr/media/productstorage/images/okaidi/0650445/thumbs/0252138_800.jpg",
+        "desc":"Shorts amarillos para estar a la moda este verano",
+        "category": ["verano", "shorts"]
+    },
+    {
+        "id": 7,
+        "title": "Buzo a rayas",
+        "price": 2600,
+        "pictureUrl" : "https://i.pinimg.com/originals/44/1a/7a/441a7ace6e3bc4a9a13f1bd84c5cb7d1.jpg",
+        "desc":"Buzo muy abrigado con bufanda de regalo",
+        "category": ["invierno", "buzos"]
+    },
+    {
+        "id": 8,
+        "title": "Pantalon de jean",
+        "price": 3100,
+        "pictureUrl" : "https://i.etsystatic.com/13246897/r/il/a83611/2060449370/il_fullxfull.2060449370_7ma0.jpg",
+        "desc":"Pantalon de jean para ellas",
+        "category": ["invierno", "verano", "pantalones"]
+    }
+]

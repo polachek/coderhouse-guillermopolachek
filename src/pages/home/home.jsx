@@ -1,12 +1,13 @@
-import {ItemListContainer} from '../../components/ItemListContainer/ItemListContainer'
-import {ItemDetailContainer} from '../../components/ItemDetailContainer/ItemDetailContainer'
+import './home.css';
+import {ItemListContainer} from '../ItemListContainer/ItemListContainer'
 
 export const Home = () => {
     return(
-        <div className="App">
+        <div className="home">
+            <h1>
+                Ropa para bebes PG
+            </h1>
             <ItemListContainer greeting={'Prop greeting desde App.js'}/>  
-            <ItemDetailContainer />      
-            <p>Contenido del sitio</p>
         </div>
     )
 }

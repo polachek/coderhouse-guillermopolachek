@@ -1,4 +1,21 @@
-# Getting Started with Create React App
+# Proyecto tienda ropa de bebes, Guillermo Polachek
+Proyecto creado para la consigna de CoderHouse
+Tienda para comprar ropa de bebes
+Se trata de una tienda normal para probar e implementar todas las funcionalidades de ReactJS
+
+## Dependencias externas
+Fontawesome: https://fontawesome.com/v5.15/how-to-use/on-the-web/using-with/react
+
+## Notas para corrección primera instancia
+La consigna decía que la dirección "/" debería llevar a ItemListContainer pero intencionalmente le estoy redireccionando a Home, donde llamo a ItemListContainer, ya que "/category/:id" lleva a ItemListContainer
+El contador "ItemCount" se encuentra dentro de un Detalle de Producto "ItemDetail" al cual se puede llegar haciendo click en cualquiera de ellos
+
+
+
+
+
+
+## Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 

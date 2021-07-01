@@ -43,6 +43,11 @@ header .navigation a:hover{
     color:#5abcd8;
 }
 
+header .navigation a[aria-current] {
+    font-weight: bold;
+    color: #5dc1b9;
+}
+
 header ul li{
     display: inline-block;
     padding-right: 15px;
