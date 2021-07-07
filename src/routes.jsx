@@ -1,6 +1,7 @@
 import React from "react";
 import {BrowserRouter as Router, Switch, Route, } from "react-router-dom";
 import { Home } from "./pages/home/home";
+import { Cart } from "./pages/cart/cart";
 import { NotFound } from "./pages/notFound/notFound";
 import {NavBar} from './components/navBar/NavBar'
 import {ItemDetailContainer} from './pages/ItemDetailContainer/ItemDetailContainer'
@@ -13,6 +14,9 @@ export const Routes = () => {
         <Switch>
           <Route exact path="/">
             <Home />
+          </Route>
+          <Route exact path="/cart">
+            <Cart />
           </Route>
           <Route exact path="/category/:id">
             <ItemListContainer />
