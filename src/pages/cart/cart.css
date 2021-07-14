@@ -1,0 +1,13 @@
+.cart_items{
+
+}
+
+.cart_detail{
+
+}
+
+.cart_detail, .cart_items{
+    display: inline-block;
+    width: 50%;
+    vertical-align:top;
+}
