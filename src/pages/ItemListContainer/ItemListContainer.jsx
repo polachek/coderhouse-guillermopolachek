@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom'
 import {ItemList} from '../../components/ItemList/ItemList'
 import {Loader} from '../../components/Loader/Loader'
 import Productos from '../../data/items.json'
+import {getFirestore} from '../../firebase/firebase'
 
 export const ItemListContainer = (props) => {
 
@@ -11,14 +12,17 @@ export const ItemListContainer = (props) => {
 
     useEffect(()=>{
         setCatalogo(undefined)
-        const promesaItems = new Promise((resolve,reject)=>{
-            setTimeout(()=> {
-                const ProductosCat =  id ? Productos.filter(item => item.category.includes(id)) : Productos;
-                resolve(ProductosCat)
-            }, 1000);
-        })
-        promesaItems.then((resolve)=>{
-            setCatalogo(resolve)
+        const db = getFirestore();
+        const itemCollection = db.collection("productos")
+        itemCollection.get().then((querySnapshot) =>{
+            if(querySnapshot.size === 0){
+                console.log('No hay resultados')
+            }
+            setCatalogo(querySnapshot.docs.map(doc => doc.data()));
+        }).catch((error) =>{
+            console.log('Error buscando productos', error)
+        }).finally(() =>{
+            console.log('Termino')
         })
     },[id])
     

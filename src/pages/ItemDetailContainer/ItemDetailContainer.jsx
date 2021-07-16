@@ -11,7 +11,7 @@ export const ItemDetailContainer = () => {
 
     const miItem = Productos.find(element => element.id == id);
 
-    useEffect(()=>{
+    /*useEffect(()=>{
         const promesaItems = new Promise((resolve,reject)=>{
             setTimeout(()=> {
                 resolve(miItem)
@@ -20,7 +20,22 @@ export const ItemDetailContainer = () => {
         promesaItems.then((resolve)=>{
             setCatalogo(resolve)
         })
-    },[])
+    },[])*/
+    useEffect(()=>{
+        setCatalogo(undefined)
+        const db = getFirestore();
+        const itemCollection = db.collection("productos")
+        itemCollection.get().then((querySnapshot) =>{
+            if(querySnapshot.size === 0){
+                console.log('No hay resultados')
+            }
+            setCatalogo(querySnapshot.docs.map(doc => doc.data()));
+        }).catch((error) =>{
+            console.log('Error buscando productos', error)
+        }).finally(() =>{
+            console.log('Termino')
+        })
+    },[id])
     
 
     return <div className="iListCont">
