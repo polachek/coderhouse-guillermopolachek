@@ -8,8 +8,13 @@ import {Link} from 'react-router-dom';
 export const Cart = () => {
     const {getCarrito} = useContext(CartContext)
     const {getTotal} = useContext(CartContext)
+    const {comprar} = useContext(CartContext)
     const miCarrito = getCarrito()
     const total_carrito = getTotal()
+
+    function compra(){
+        comprar()
+    }  
 
     return(
         <div className="cart">
@@ -20,6 +25,9 @@ export const Cart = () => {
                 <section className="cart_items">{miCarrito.map(item => <ItemCarrito key={item.id} item={item}/>)}</section>
                 <section className="cart_detail">
                     <p>Total en carrito ${total_carrito}</p>
+                    <button type="button" onClick={compra}>
+                        Terminar mi compra
+                    </button>
                 </section>
                 </div>
             }

@@ -2,46 +2,37 @@ import { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import {ItemDetail} from '../../components/ItemDetail/ItemDetail'
 import {Loader} from '../../components/Loader/Loader'
-import Productos from '../../data/items.json'
 import {getFirestore} from '../../firebase/firebase'
 
 export const ItemDetailContainer = () => {
 
     const {id} = useParams()
-    const [catalogo,setCatalogo] = useState(undefined)
+    const [miItem,setMiItem] = useState(undefined)
 
-    const miItem = Productos.find(element => element.id == id);
-
-    /*useEffect(()=>{
-        const promesaItems = new Promise((resolve,reject)=>{
-            setTimeout(()=> {
-                resolve(miItem)
-            }, 1000);
-        })
-        promesaItems.then((resolve)=>{
-            setCatalogo(resolve)
-        })
-    },[])*/
     useEffect(()=>{
-        setCatalogo(undefined)
+        setMiItem(undefined)
         const db = getFirestore();
         const itemCollection = db.collection("productos")
-        itemCollection.get().then((querySnapshot) =>{
-            if(querySnapshot.size === 0){
-                console.log('No hay resultados')
+        const item = itemCollection.doc(id)
+
+        item.get().then((doc) =>{
+            if(!doc.exists){
+                console.log('No se encontro Item')
+                return
             }
-            setCatalogo(querySnapshot.docs.map(doc => doc.data()));
+            console.log('Item Encontrado')
+            setMiItem({id:doc.id, ...doc.data()})
         }).catch((error) =>{
             console.log('Error buscando productos', error)
         }).finally(() =>{
-            console.log('Termino')
+            /*console.log('Termino')*/
         })
     },[id])
     
 
     return <div className="iListCont">
-            {catalogo ? (
-                <ItemDetail item={catalogo}/>
+            {miItem ? (
+                <ItemDetail item={miItem}/>
             ) : (<Loader />)
             }
             

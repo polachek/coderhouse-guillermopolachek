@@ -21,7 +21,7 @@ export const ItemDetail = ({item}) => {
             <p>{item.title}</p>
             <p>{item.desc}</p>
             <p>${item.price}</p>
-            {!cantidad && <ItemCount stock={10} initial={1} onAdd={onAdd}/>}
+            {!cantidad && <ItemCount stock={item.stock} initial={1} onAdd={onAdd}/>}
             {!!cantidad && (
                 <Link to="/cart">
                     <button type="button">
