@@ -8,24 +8,27 @@ export const ItemDetailContainer = () => {
 
     const {id} = useParams()
     const [miItem,setMiItem] = useState(undefined)
+    const [cargando,setCargando] = useState(true)
+    const [errorProducto,setErrorProducto] = useState(undefined)
 
     useEffect(()=>{
         setMiItem(undefined)
+        setCargando(true)
         const db = getFirestore();
         const itemCollection = db.collection("productos")
         const item = itemCollection.doc(id)
 
         item.get().then((doc) =>{
             if(!doc.exists){
-                console.log('No se encontro Item')
+                setErrorProducto('No existe el articulo buscado')
                 return
-            }
-            console.log('Item Encontrado')
-            setMiItem({id:doc.id, ...doc.data()})
+            }else{
+                setMiItem({id:doc.id, ...doc.data()})
+            }            
         }).catch((error) =>{
-            console.log('Error buscando productos', error)
+            setErrorProducto('Error buscando productos', error)
         }).finally(() =>{
-            /*console.log('Termino')*/
+            setCargando(false)
         })
     },[id])
     
@@ -33,8 +36,9 @@ export const ItemDetailContainer = () => {
     return <div className="iListCont">
             {miItem ? (
                 <ItemDetail item={miItem}/>
-            ) : (<Loader />)
+            ) : (!cargando && <p>{errorProducto}</p>)
             }
+            {cargando && <Loader />}
             
         </div>
     

@@ -1,0 +1,27 @@
+.itemCount{
+    width: 100%;
+    text-align: center;
+}
+
+.itemCount button{
+    border-radius: 0px;
+    background-color: transparent;
+    border: 2px solid #5dc1b9;
+    width: 35px;
+    height: 35px;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.itemCount span{
+    display: inline-block;
+    font-size: 18px;
+    margin: 0px 10px;
+}
+
+.itemCount .addtoCart{
+    display: block;
+    width: auto;
+    height: auto;
+    margin: 10px auto 0;
+}

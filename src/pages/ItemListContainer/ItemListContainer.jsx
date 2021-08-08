@@ -8,22 +8,25 @@ export const ItemListContainer = (props) => {
 
     const {id} = useParams()
     const [catalogo,setCatalogo] = useState(undefined)
+    const [cargando,setCargando] = useState(true)
+    const [errorProducto,setErrorProducto] = useState(undefined)
 
     useEffect(()=>{
         setCatalogo(undefined)
+        setCargando(true)
         const db = getFirestore();
         const itemCollection = db.collection("productos")
         const filteredCollection = id ? itemCollection.where("category", "array-contains", id) : itemCollection;
         filteredCollection.get().then((querySnapshot) =>{
             if(querySnapshot.size === 0){
-                console.log('No hay resultados')
-            }
-            setCatalogo(querySnapshot.docs.map(doc => ({ ...doc.data(), id: doc.id })));
-            console.log(catalogo)
+                setErrorProducto('No hay productos en esta categoria')
+            }else{
+                setCatalogo(querySnapshot.docs.map(doc => ({ ...doc.data(), id: doc.id })));
+            }            
         }).catch((error) =>{
-            console.log('Error buscando productos', error)
+            setErrorProducto('Error buscando productos', error)
         }).finally(() =>{
-            /*console.log('Termino')*/
+            setCargando(false)
         })
     },[id])
     
@@ -32,8 +35,9 @@ export const ItemListContainer = (props) => {
             <span>{props.greeting}</span>            
             {catalogo ? (
                 <ItemList items={catalogo}/>
-            ) : (<Loader />)
-            }           
+            )  : (!cargando && <p>{errorProducto}</p>)
+            }
+            {cargando && <Loader />}   
         </div>
     
 }
