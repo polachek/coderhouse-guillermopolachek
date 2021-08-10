@@ -1,13 +1,14 @@
-.cart_items{
-
-}
-
-.cart_detail{
-
-}
-
-.cart_detail, .cart_items{
+.cart_detail, .cart_items, .cart_empty{
     display: inline-block;
     width: 50%;
     vertical-align:top;
+}
+
+.form_cart label{
+    display: block;
+    margin-bottom: 10px;
+}
+
+.form_cart label input{
+    margin-left: 5px;
 }

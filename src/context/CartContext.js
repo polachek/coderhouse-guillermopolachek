@@ -7,6 +7,7 @@ export const CartContext = createContext()
 
 export const CartProvider = ({children}) => {
     const [carrito, setCarrito] = useState([])
+    const [miOrden,setMiOrden] = useState(undefined)
 
     function addItem (item, cantidad){        
         if(isInCart(item.id)){
@@ -23,7 +24,7 @@ export const CartProvider = ({children}) => {
         return carrito
     }
 
-    function clear (){
+    function clear(){
         setCarrito([]);
     }
 
@@ -40,7 +41,12 @@ export const CartProvider = ({children}) => {
         if (index > -1) {
             const nuevoCarrito = [...carrito];
             nuevoCarrito.splice(index, 1);
-            setCarrito([nuevoCarrito])
+            if(nuevoCarrito.length > 0){
+                setCarrito([nuevoCarrito])
+            }else{
+                setCarrito([])
+            }
+            
         }   
     }
 
@@ -73,7 +79,7 @@ export const CartProvider = ({children}) => {
         return carrito_cant
     }
 
-    function getOrder(){
+    function getOrder(nombre,apellido,telefono,email){
         const items = carrito.map((item) =>({
             id: item.id,
             title: item.title,
@@ -83,28 +89,48 @@ export const CartProvider = ({children}) => {
 
         return{
             buyer:{
-                name: 'Guillermo',
-                phone: '0989898',
-                email: 'correo@gmail.com'
+                name: nombre,
+                surname: apellido,
+                phone: telefono,
+                email: email
             },
             items: items,
             date: firebase.firestore.Timestamp.fromDate(new Date()),
-            total: getTotal()
+            total: getTotal(),
+            state: "Compra web"
         }
     }
 
-    function comprar(){
+    function comprar(nombre,apellido,telefono,email){
         const db = getFirestore();
         const orders = db.collection("orders")
-        const myOrder = getOrder()
+        const myOrder = getOrder(nombre,apellido,telefono,email)
         orders.add(myOrder).then(({id})=>{
             actualizarStock(db,myOrder)
-            alert('Compra exitosa')
+            const itemCollection = db.collection("orders")
+            const myBuy = itemCollection.doc(id)
+            myBuy.get().then((doc) =>{
+                if(!doc.exists){
+                    /*setErrorOrden('No existe la orden')*/
+                    return
+                }else{
+                    setMiOrden({id:doc.id, ...doc.data()})
+                    clear()
+                }            
+            }).catch((error) =>{
+                /*setErrorOrden('Error buscando orden', error)*/
+            }).finally(() =>{
+                /*setCargando(false)*/
+            })
         }).catch(err =>{
             console.log(err)
         }).finally(()=>{
             console.log('Termino compra')
         })
+    }
+
+    function getCompra(){        
+        return miOrden
     }
 
     function actualizarStock(db){
@@ -118,7 +144,7 @@ export const CartProvider = ({children}) => {
     }
 
     return( 
-    <CartContext.Provider value={{addItem, getCarrito, getTotal, getCantItems, comprar}}>
+    <CartContext.Provider value={{addItem, getCarrito, getTotal, getCantItems, comprar, getCompra, removeItem}}>
         {children}
     </CartContext.Provider>
     )
